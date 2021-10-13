@@ -2,6 +2,7 @@ package com.chockqiu.usualktx
 
 import android.graphics.Rect
 import android.view.View
+import android.view.ViewGroup
 
 /**
  * Get global visible rect with another views
@@ -18,4 +19,89 @@ fun View.getGlobalVisibleRectWith(vararg views: View): Rect {
         mRect.join(m)
     }
     return mRect
+}
+
+fun View.setMargins(left: Int, top: Int, right: Int, bottom: Int) {
+    val lp = layoutParams
+    if (lp is ViewGroup.MarginLayoutParams) {
+        lp.setMargins(left, top, right, bottom)
+    }
+}
+
+fun View.marginStart(px: Int) {
+    val lp = layoutParams
+    if (lp is ViewGroup.MarginLayoutParams) {
+        lp.marginStart = px
+    }
+}
+
+fun View.marginLeft(px: Int) {
+    val lp = layoutParams
+    if (lp is ViewGroup.MarginLayoutParams) {
+        lp.leftMargin = px
+    }
+}
+
+fun View.marginTop(px: Int) {
+    val lp = layoutParams
+    if (lp is ViewGroup.MarginLayoutParams) {
+        lp.topMargin = px
+    }
+}
+
+fun View.marginEnd(px: Int) {
+    val lp = layoutParams
+    if (lp is ViewGroup.MarginLayoutParams) {
+        lp.marginEnd = px
+    }
+}
+
+fun View.marginRight(px: Int) {
+    val lp = layoutParams
+    if (lp is ViewGroup.MarginLayoutParams) {
+        lp.rightMargin = px
+    }
+}
+
+fun View.marginBottom(px: Int) {
+    val lp = layoutParams
+    if (lp is ViewGroup.MarginLayoutParams) {
+        lp.bottomMargin = px
+    }
+}
+
+fun View.dp2px(dpValue: Number): Int {
+    context?.apply {
+        val f = dpValue.toFloat()
+        val scale: Float = resources.displayMetrics.density
+        return (f * scale + 0.5f).toInt()
+    }
+    return dpValue.toInt()
+}
+
+fun View.px2dp(dpValue: Number): Float {
+    context?.apply {
+        val f = dpValue.toFloat()
+        val scale: Float = resources.displayMetrics.density
+        return f / scale + 0.5f
+    }
+    return dpValue.toFloat()
+}
+
+fun View.sp2px(dpValue: Number): Int {
+    context?.apply {
+        val f = dpValue.toFloat()
+        val scale: Float = resources.displayMetrics.scaledDensity
+        return (f * scale + 0.5f).toInt()
+    }
+    return dpValue.toInt()
+}
+
+fun View.px2sp(dpValue: Number): Float {
+    context?.apply {
+        val f = dpValue.toFloat()
+        val scale: Float = resources.displayMetrics.scaledDensity
+        return f / scale + 0.5f
+    }
+    return dpValue.toFloat()
 }
