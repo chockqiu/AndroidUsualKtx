@@ -69,39 +69,3 @@ fun View.marginBottom(px: Int) {
         lp.bottomMargin = px
     }
 }
-
-fun View.dp2px(dpValue: Number): Int {
-    context?.apply {
-        val f = dpValue.toFloat()
-        val scale: Float = resources.displayMetrics.density
-        return (f * scale + 0.5f).toInt()
-    }
-    return dpValue.toInt()
-}
-
-fun View.px2dp(dpValue: Number): Float {
-    context?.apply {
-        val f = dpValue.toFloat()
-        val scale: Float = resources.displayMetrics.density
-        return f / scale + 0.5f
-    }
-    return dpValue.toFloat()
-}
-
-fun View.sp2px(dpValue: Number): Int {
-    context?.apply {
-        val f = dpValue.toFloat()
-        val scale: Float = resources.displayMetrics.scaledDensity
-        return (f * scale + 0.5f).toInt()
-    }
-    return dpValue.toInt()
-}
-
-fun View.px2sp(dpValue: Number): Float {
-    context?.apply {
-        val f = dpValue.toFloat()
-        val scale: Float = resources.displayMetrics.scaledDensity
-        return f / scale + 0.5f
-    }
-    return dpValue.toFloat()
-}
