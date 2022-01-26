@@ -5,6 +5,20 @@ import android.view.View
 import android.view.ViewGroup
 
 /**
+ * 扩展方法：设置点击事件，防止快速点击
+ */
+fun View.setSingleClick(ignoreTime: Int = 500, onclick: (View) -> Unit) {
+    var mLastClickMills = 0L
+    setOnClickListener {
+        val currentTimeMillis = System.currentTimeMillis()
+        if (currentTimeMillis - mLastClickMills >= ignoreTime) {
+            mLastClickMills = currentTimeMillis
+            onclick.invoke(this)
+        }
+    }
+}
+
+/**
  * Get global visible rect with another views
  *
  * @param views 需要参与计算的View
