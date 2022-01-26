@@ -21,12 +21,13 @@ fun InputStream.saveAsFile(file: File, close: Boolean? = true) {
     flowTo(out, close)
 }
 
-fun InputStream.readAsBytes(close: Boolean? = true) {
+fun InputStream.readAsBytes(close: Boolean? = true): ByteArray {
     val out = ByteArrayOutputStream(1024 * 4)
     flowTo(out, close)
+    return out.toByteArray()
 }
 
-fun InputStream.readAsStr(charset: String = "utf-8", close: Boolean? = true) {
+fun InputStream.readAsStr(charset: String = "utf-8", close: Boolean? = true): String {
     val buf = ByteArray(1024 * 4)
     val b = StringBuilder(1024 * 4)
     var c = read(buf)
@@ -35,4 +36,5 @@ fun InputStream.readAsStr(charset: String = "utf-8", close: Boolean? = true) {
         c = read(buf)
     }
     if (close == true) close()
+    return b.toString()
 }
