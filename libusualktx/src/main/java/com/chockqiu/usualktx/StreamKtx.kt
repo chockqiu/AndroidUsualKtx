@@ -16,9 +16,10 @@ fun InputStream.flowTo(out: OutputStream, close: Boolean? = true) {
     }
 }
 
-fun InputStream.saveAsFile(file: File, close: Boolean? = true) {
+fun InputStream.saveAsFile(file: File, close: Boolean? = true): File {
     val out = FileOutputStream(file)
     flowTo(out, close)
+    return file
 }
 
 fun InputStream.readAsBytes(close: Boolean? = true): ByteArray {
