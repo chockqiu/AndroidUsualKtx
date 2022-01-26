@@ -28,13 +28,5 @@ fun InputStream.readAsBytes(close: Boolean? = true): ByteArray {
 }
 
 fun InputStream.readAsStr(charset: String = "utf-8", close: Boolean? = true): String {
-    val buf = ByteArray(1024 * 4)
-    val b = StringBuilder(1024 * 4)
-    var c = read(buf)
-    while (c != -1) {
-        b.append(String(buf, 0, c, Charset.forName(charset)))
-        c = read(buf)
-    }
-    if (close == true) close()
-    return b.toString()
+    return String(readAsBytes(close), Charset.forName(charset))
 }
