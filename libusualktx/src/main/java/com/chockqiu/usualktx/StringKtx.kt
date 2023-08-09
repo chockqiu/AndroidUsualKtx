@@ -48,9 +48,9 @@ object StringKtx {
             md5str.append(Integer.toHexString(digital))
         }
         return if (upperCase) {
-            md5str.toString().toUpperCase()
+            md5str.toString().uppercase()
         } else {
-            md5str.toString().toLowerCase()
+            md5str.toString().lowercase()
         }
     }
 
