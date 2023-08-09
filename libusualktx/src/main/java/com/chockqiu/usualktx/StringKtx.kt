@@ -1,6 +1,7 @@
 package com.chockqiu.usualktx
 
 import android.app.Application
+import android.graphics.Color
 import com.chockqiu.usualktx.AnyExt.catchBlock
 import java.io.File
 import java.security.MessageDigest
@@ -115,4 +116,15 @@ object StringKtx {
 //        }
 //    }
 
+    fun String.colorInt(def: String? = null): Int {
+        return try {
+            Color.parseColor(this)
+        } catch (e: java.lang.Exception) {
+            try {
+                Color.parseColor(def)
+            } catch (e: java.lang.Exception) {
+                Color.BLACK
+            }
+        }
+    }
 }
