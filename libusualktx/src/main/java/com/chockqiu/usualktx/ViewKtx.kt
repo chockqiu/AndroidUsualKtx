@@ -3,6 +3,7 @@ package com.chockqiu.usualktx
 import android.graphics.Rect
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import com.chockqiu.usualktx.RectKtx.join
 
 
@@ -85,5 +86,13 @@ object ViewKtx {
         if (lp is ViewGroup.MarginLayoutParams) {
             lp.bottomMargin = px
         }
+    }
+
+    fun View.getMarginLayoutParams(): ViewGroup.MarginLayoutParams? {
+        return layoutParams as? ViewGroup.MarginLayoutParams
+    }
+
+    fun View.getLinearLayoutLayoutParams(): LinearLayout.LayoutParams? {
+        return layoutParams as? LinearLayout.LayoutParams
     }
 }
